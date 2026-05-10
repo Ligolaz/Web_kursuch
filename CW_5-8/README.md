@@ -1,1 +1,1 @@
-# [Пункти 5-8](https://github.com/Ligolaz/Web_kursuch/tree/main/CW_Ok)
+# [Пункти 9-10](https://github.com/Ligolaz/Web_kursuch/tree/main/CW_Ok)
