@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head> <!-- Налаштування вкладки та підключення стилів -->
+	<meta charset="UTF-8">
+	<title>BlogHub Перегляд публікації</title>
+	<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+	<nav></nav> <!-- Шапка сайту, заповнюється автоматично через app.js -->
+
+	<main class="container main-wrapper">
+		<!-- Кнопка повернення на головну сторінку -->
+		<div class="back-nav fadeInUp"><a href="index.html" class="btn-back">← На головну</a></div>
+
+		<!-- Тут за допомогою js підтягнеться весь контент поста -->
+		<article id="post-content" class="fadeInUp"></article>
+
+		<!-- Розділ для коментів від користувачів -->
+		<section class="comment-section container fadeInUp">
+			<h3 class="text-accent">Коментарі</h3>
+			<!-- Поле вводу для нового коментаря(з'являється тільки після входу в акк) -->
+			<div id="comment-form-container" class="comment-input-area">
+				<textarea id="commentText" rows="3" placeholder="Що думаєте про це?"></textarea>
+				<button id="submitComment" class="btn-accent" style="margin-top: 10px;">Відправити</button>
+			</div>
+			<!-- Контейнер для відображення коментарів -->
+			<div id="comments-list"></div>
+		</section>
+	</main>
+
+	<footer></footer> <!-- Футер(ofc at the bottom) -->
+
+	<script src="js/app.js"></script> <!-- Підключення загальної логіки -->
+	<script src="js/post.js"></script> <!-- Підключення логіки завантаження контенту та дерева коментарів -->
+</body>
+</html>

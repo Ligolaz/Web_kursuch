@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head> <!-- Налаштування вкладки та підключення стилів -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>BlogHub Авторизація</title>
+	<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+	<nav></nav> <!-- Шапка сайту, заповнюється автоматично через app.js -->
+
+	<main class="container main-wrapper">
+		<!-- Кнопка повернення на головну сторінку -->
+		<div class="back-nav fadeInUp">
+			<a href="index.html" class="btn-back">← На головну</a>
+		</div>
+
+		<!-- Основний блок із формами входу та реєстрації -->
+		<div class="auth-page-wrapper">
+			<div class="content-card auth-card fadeInUp">
+				<div class="auth-tabs">
+					<!-- Вкладки для перемикання між вх/ре -->
+					<span id="tab-login" class="auth-tab active" onclick="switchTab('login')">Вхід</span>
+					<span id="tab-register" class="auth-tab" onclick="switchTab('register')">Реєстрація</span>
+				</div>
+
+				<!-- Форма для входу в систему -->
+				<form id="loginForm" class="auth-form active">
+					<div class="form-group"><label>Логін</label><input type="text" id="loginUser" placeholder="Ваш логін" required></div>
+					<div class="form-group"><label>Пароль</label><input type="password" id="loginPass" placeholder="********" required></div>
+					<button type="submit" class="btn-accent">Увійти</button>
+				</form>
+
+				<!-- Форма для створення нового акаунта -->
+				<form id="registerForm" class="auth-form">
+					<div class="form-group"><label>Логін</label><input type="text" id="regUser" placeholder="User" required></div>
+					<div class="form-group">
+						<label class="visible-label">Ваш нікнейм на сайті</label>
+						<input type="text" id="regName" placeholder="Display_Name" required>
+					</div>
+					<div class="form-group"><label>Пароль</label><input type="password" id="regPass" placeholder="12_pass_34_word" required></div>
+					<button type="submit" class="btn-accent">Створити акаунт</button>
+				</form>
+				<!-- Тут пише про помилки чи успіх -->
+				<div id="authMessage" class="message"></div>
+			</div>
+		</div>
+	</main>
+
+	<footer></footer> <!-- Футер(ofc at the bottom) -->
+
+	<script src="js/app.js"></script> <!-- Підключення загальної логіки -->
+	<script src="js/auth.js"></script> <!-- Підключення логіки авторизації -->
+</body>
+</html>

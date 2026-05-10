@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head> <!-- Налаштування вкладки та підключення стилів -->
+	<meta charset="UTF-8">
+	<title>BlogHub Профіль</title>
+	<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+	<nav></nav> <!-- Шапка сайту, заповнюється автоматично через app.js -->
+
+	<main class="container main-wrapper">
+		<!-- Кнопка повернення на головну сторінку -->
+		<div class="back-nav fadeInUp"><a href="index.html" class="btn-back">← На головну</a></div>
+
+		<!-- Інформація про користувача та його статистику(к-ть постів та коментарів) -->
+		<section id="user-info-card" class="content-card fadeInUp"></section>
+
+		<!-- Заголовок розділу з особистими постами автора -->
+		<h2 class="text-accent fadeInUp" style="margin-bottom: 20px;">Пости автора</h2>
+
+		<!-- Місце для відображення карток постів автора -->
+		<div id="news-container" class="news-grid"></div>
+		<!-- Кнопочки для перемикання між сторінками постів -->
+		<div id="pagination" class="pagination-container fadeInUp"></div>
+	</main>
+
+	<footer></footer> <!-- Футер(ofc at the bottom) -->
+
+	<script src="js/app.js"></script> <!-- Підключення загальної логіки -->
+	<script src="js/profile.js"></script> <!-- Підключення логіки завантаження даних профілю та пов'язаних постів -->
+</body>
+</html>

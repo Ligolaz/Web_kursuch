@@ -1,0 +1,714 @@
+/*==============================
+Базові налаштування (загальне)
+==============================*/
+@import url('https://fonts.cdnfonts.com/css/bender');
+
+html {
+	scroll-behavior: smooth;
+	height: 100%;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	background-color: #1a1a1a;
+	color: #e0e0e0;
+	font-family: 'Bender', sans-serif;
+	line-height: 1.7;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	min-height: 125vh; /*Компенсація масштабу 0.8*/
+	zoom: 0.8;
+}
+
+main {
+	flex: 1 0 auto;
+}
+
+.container {
+	width: 1100px; 
+	margin: 0 auto;
+	padding: 0 20px;
+}
+
+/*===========================================
+Навігація (used in: app.js, so в усіх html)
+===========================================*/
+nav {
+	position: fixed;
+	top: 0; left: 0; right: 0;
+	width: 100%;
+	background-color: rgba(23, 23, 23, 0.98);
+	backdrop-filter: blur(10px);
+	border-bottom: 1px solid #333;
+	z-index: 1000;
+	padding: 15px 0;
+}
+
+.nav-wrapper {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.logo-wrap {
+	font-weight: 700;
+	font-size: 1.6rem;
+	color: #fff;
+	text-decoration: none;
+	display: flex;
+	align-items: center;
+}
+
+.hub-box {
+	background-color: #00d4ff;
+	color: #000;
+	padding: 2px 8px;
+	border-radius: 4px;
+	margin-left: 4px;
+}
+
+.nav-links {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+}
+
+.nav-divider {
+	width: 1px;
+	height: 25px;
+	background-color: #333;
+	margin: 0 5px;
+}
+
+.nav-user-link {
+	color: #00d4ff;
+	font-weight: bold;
+	font-size: 1.1rem;
+	text-decoration: none;
+	transition: 0.3s;
+}
+
+.nav-user-link:hover {
+	color: #fff;
+}
+
+/*============================
+Сповіщення (used in: app.js)
+============================*/
+.notif-wrapper {
+	position: relative;
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+	margin-left: 10px;
+}
+
+.notif-bell {
+	font-size: 1.4rem;
+	color: #888;
+	transition: 0.3s;
+}
+
+.notif-wrapper:hover .notif-bell {
+	color: #ffcc00; /*жовтий при наведенні*/
+}
+
+.notif-badge { /*синя крапка нових повідомлень*/
+	position: absolute;
+	top: -2px;
+	right: -2px;
+	width: 10px;
+	height: 10px;
+	background-color: #00d4ff;
+	border-radius: 50%;
+	border: 2px solid #171717;
+	display: none;
+}
+
+.notif-dropdown {
+	position: absolute;
+	top: 45px;
+	right: 0;
+	width: 300px;
+	background-color: #1f1f1f;
+	border: 1px solid #333;
+	border-radius: 15px;
+	box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+	display: none;
+	flex-direction: column;
+	overflow: hidden;
+	z-index: 2000;
+}
+
+.notif-dropdown.active {
+	display: flex;
+}
+
+.notif-item {
+	padding: 15px;
+	border-bottom: 1px solid #333;
+	text-decoration: none;
+	color: #e0e0e0;
+	font-size: 0.9rem;
+	transition: 0.2s;
+	display: block;
+}
+
+.notif-item:hover {
+	background-color: #262626;
+}
+
+.notif-item.unread {
+	background-color: rgba(0, 212, 255, 0.05);
+}
+
+.notif-empty {
+	padding: 20px;
+	text-align: center;
+	color: #555;
+	font-size: 0.9rem;
+}
+
+/*=======================================================
+Структура сторінки та фільтри (used in: index, profile)
+=======================================================*/
+.main-wrapper {
+	padding-top: 150px;
+	padding-bottom: 60px;
+}
+
+.page-header {
+	margin-bottom: 40px;
+}
+
+.filter-bar {
+	display: flex;
+	gap: 10px;
+	padding: 15px 25px !important;
+	margin-top: 20px;
+	flex-wrap: nowrap;
+	align-items: center;
+}
+
+.filter-bar input { 
+	flex: 3; 
+	min-width: 100px; 
+}
+
+.filter-bar select { 
+	flex: 2; 
+	min-width: 130px; 
+}
+
+/*===============================================
+Картки постів (used in: app.js, index, profile)
+===============================================*/
+.card-link {
+	text-decoration: none;
+	color: inherit;
+	display: block;
+}
+
+.content-card {
+	background-color: #1f1f1f;
+	border: 1px solid #333;
+	border-radius: 20px;
+	padding: 20px 25px;
+	margin-bottom: 20px;
+	animation: fadeInUp 0.6s ease-out both;
+	width: 100%;
+}
+
+.news-grid {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+}
+
+.news-grid .content-card {
+	transition: all 0.2s ease;
+}
+
+.card-link:hover .content-card {
+	background-color: #252525;
+	border-color: #444;
+	transform: translateY(-2px);
+}
+
+.card-meta { 
+	font-size: 0.9rem; 
+	margin-bottom: 12px; 
+	color: #888; 
+}
+
+.card-author { 
+	color: #00d4ff;
+	font-weight: bold;
+}
+
+.card-author:hover { 
+	text-decoration: underline; /*підкреслення ніку в картці при наведенні*/
+}
+
+.card-title { 
+	margin: 0 0 10px 0; 
+	font-size: 1.8rem; 
+	color: #ffffff; 
+	font-weight: bold; 
+}
+
+.card-excerpt { 
+	color: #b0b0b0; 
+	font-size: 1.1rem; 
+	line-height: 1.6; 
+	margin-bottom: 15px; 
+}
+
+.news-grid .card-excerpt {
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.card-category-tag { 
+	display: inline-block; 
+	color: #00d4ff; 
+	font-size: 0.9rem; 
+	font-weight: bold; 
+}
+
+/*=======================================================
+Авторизація та створення (used in: login, create, edit)
+=======================================================*/
+.auth-page-wrapper {
+	display: flex;
+	justify-content: center;
+}
+
+.auth-card {
+	width: 800px; 
+	max-width: 100%;
+	padding: 50px;
+}
+
+.auth-tabs {
+	display: flex;
+	gap: 40px;
+	margin-bottom: 40px;
+	justify-content: center;
+}
+
+.auth-tab {
+	cursor: pointer;
+	color: #888;
+	font-size: 1.4rem;
+	transition: 0.3s;
+	padding-bottom: 8px;
+	border-bottom: 3px solid transparent;
+}
+
+.auth-tab.active {
+	color: #00d4ff;
+	border-bottom: 3px solid #00d4ff;
+}
+
+.auth-form {
+	display: none;
+	flex-direction: column;
+	gap: 25px;
+}
+
+.auth-form.active {
+	display: flex;
+}
+
+/*==========================
+Форми та інпути (загальне)
+==========================*/
+input, textarea, select {
+	background: #262626;
+	border: 1px solid #3d3d3d;
+	color: #fff;
+	padding: 14px 20px;
+	border-radius: 12px;
+	font-family: 'Bender';
+	transition: 0.3s;
+}
+
+input:focus, textarea:focus, select:focus {
+	outline: none;
+	border-color: #00d4ff;
+}
+
+textarea {
+	resize: none;
+}
+
+.form-group {
+	display: flex;
+	flex-direction: column;
+}
+
+.form-group label {
+	display: block;
+	color: #888;
+	font-size: 0.95rem;
+	margin-bottom: 8px;
+	padding-left: 5px;
+}
+
+/*========================================
+Пагінація (used in: main.js, profile.js)
+========================================*/
+.pagination-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 8px;
+	margin: 40px 0;
+}
+
+.pg-btn {
+	background: #262626;
+	border: 1px solid #333;
+	color: #fff;
+	padding: 8px 16px;
+	border-radius: 10px;
+	cursor: pointer;
+	transition: 0.3s;
+	font-family: 'Bender';
+}
+
+.pg-btn:hover:not(.disabled) {
+	border-color: #00d4ff;
+	color: #00d4ff;
+}
+
+.pg-btn.active {
+	background: #00d4ff;
+	color: #000;
+	border-color: #00d4ff;
+	font-weight: bold;
+}
+
+.pg-btn.disabled {
+	opacity: 0.3;
+	cursor: not-allowed;
+}
+
+/*========================================
+Медіа контент (used in: app.js, post.js)
+========================================*/
+.video-wrapper {
+	width: 50%; /*половина від загального розміру*/
+	aspect-ratio: 16 / 9; /*europian standart*/
+	border-radius: 20px;
+	overflow: hidden;
+	margin: 25px 0;
+	border: 1px solid #333;
+	background: #000;
+	-webkit-mask-image: -webkit-radial-gradient(white, black);
+}
+
+.video-wrapper iframe {
+	width: 100%;
+	height: 100%;
+	border: none;
+}
+
+.map-wrapper { /* Google Maps*/
+	width: 100%;
+	height: 450px;
+	border-radius: 20px; /*pls not minecraft corners*/
+	overflow: hidden;
+	margin: 25px auto;
+	border: 1px solid #333;
+	position: relative;
+	-webkit-mask-image: -webkit-radial-gradient(white, black);
+}
+
+.map-wrapper iframe {
+	width: 100% !important;
+	height: 100% !important;
+	border: none !important;
+	display: block;
+	border-radius: 20px;
+}
+
+/* Слайдер картинок */
+.slider-container {
+	position: relative;
+	width: 100%;
+	margin: 20px 0;
+	border-radius: 20px;
+	overflow: hidden;
+	background: #000;
+	-webkit-mask-image: -webkit-radial-gradient(white, black);
+}
+
+.slider-wrapper {
+	display: flex;
+	transition: transform 0.4s ease;
+}
+
+.slider-item {
+	min-width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.slider-item img {
+	width: 100%;
+	max-height: 700px;
+	object-fit: cover;
+}
+
+.slider-btn {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	background: rgba(0,0,0,0.5);
+	color: white;
+	border: none;
+	width: 50px;
+	height: 50px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	border-radius: 50%;
+	font-size: 1.2rem;
+	transition: 0.3s;
+	padding: 0;
+}
+
+.slider-btn:hover { background: #00d4ff; color: #000; }
+.prev-btn { left: 15px; }
+.next-btn { right: 15px; }
+
+/*=========================================
+Кнопки та повернення назад (загальне)
+=========================================*/
+.btn-accent {
+	background-color: #00d4ff;
+	color: #000;
+	font-weight: bold;
+	padding: 12px 25px;
+	border-radius: 10px;
+	text-decoration: none;
+	border: none;
+	cursor: pointer;
+	font-family: 'Bender';
+	transition: 0.3s;
+}
+
+.btn-accent:hover {
+	background-color: #fff;
+	box-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
+}
+
+.back-nav {
+	margin-bottom: 25px;
+	display: flex;
+	justify-content: flex-start;
+}
+
+.btn-back {
+	background: transparent;
+	border: 1px solid #333;
+	color: #888;
+	padding: 8px 20px;
+	border-radius: 10px;
+	cursor: pointer;
+	font-family: 'Bender';
+	font-size: 0.95rem;
+	transition: 0.3s;
+	text-decoration: none;
+	display: inline-block;
+}
+
+.btn-back:hover {
+	border-color: #00d4ff;
+	color: #00d4ff;
+	background: rgba(0, 212, 255, 0.05);
+}
+
+/*=======================================
+Коментарі (used in: post.html, post.js)
+=======================================*/
+.comment-section {
+	margin-top: 50px;
+	border-top: 1px solid #333;
+	padding-top: 30px;
+}
+
+.comment-input-area {
+	margin-bottom: 50px; 
+}
+
+.comment-input-area textarea {
+	width: 100%;
+	min-height: 150px;
+	margin-bottom: 10px;
+}
+
+.comment-card {
+	background-color: #1a1a1a;
+	border-left: 3px solid #333; 
+	padding: 15px 20px;
+	margin-bottom: 10px;
+	border-radius: 0 15px 15px 0;
+	transition: 0.3s;
+	width: auto; 
+}
+
+.comment-card:hover {
+	border-left-color: #00d4ff;
+	background-color: #222;
+}
+
+.comment-replies {
+	margin-left: 35px; 
+	padding-left: 0;
+	display: flex;
+	flex-direction: column;
+}
+
+.comment-meta {
+	font-size: 0.85rem;
+	margin-bottom: 8px;
+	color: #888;
+}
+
+.comment-author {
+	color: #00d4ff;
+	font-weight: bold;
+	cursor: pointer; /*клікабєльно тіпа*/
+}
+
+.comment-author:hover {
+	text-decoration: underline; /*підкреслення при наведенні тож для клікабєльності*/
+}
+
+.comment-text {
+	font-size: 1rem;
+	color: #e0e0e0;
+	white-space: pre-wrap;
+}
+
+.comment-actions {
+	margin-top: 10px;
+	display: flex;
+	gap: 15px;
+}
+
+.btn-reply {
+	background: transparent;
+	border: none;
+	color: #00d4ff;
+	font-size: 0.85rem;
+	cursor: pointer;
+	font-family: 'Bender';
+	padding: 0;
+}
+
+.btn-reply:hover { text-decoration: underline; }
+
+.btn-delete-comment {
+	background: transparent;
+	border: none;
+	color: #555;
+	font-size: 0.8rem;
+	cursor: pointer;
+	padding: 0;
+	font-family: 'Bender';
+}
+
+.btn-delete-comment:hover { color: #ff4d4d; }
+
+.text-yellow {
+	color: #ffcc00 !important; /*жовт нік для пінгу*/
+	font-weight: bold;
+}
+
+/*=======================================================
+Профіль користувача (used in: profile.html, profile.js)
+=======================================================*/
+.profile-card-content {
+	display: flex;
+	align-items: center;
+	gap: 40px;
+}
+
+.profile-avatar-circle {
+	width: 100px; height: 100px; background: #262626;
+	border: 2px solid #00d4ff; border-radius: 50%;
+	display: flex; align-items: center; justify-content: center;
+	font-size: 3rem; color: #00d4ff; font-weight: bold; flex-shrink: 0;
+}
+
+.profile-info-main h2 { margin: 0; font-size: 2rem; color: #fff; }
+
+.admin-status {
+	color: #ff4d4d; font-size: 0.9rem; font-weight: bold;
+	text-transform: uppercase; margin-left: 15px;
+	border: 1px solid #ff4d4d; padding: 2px 8px; border-radius: 6px;
+}
+
+.profile-stats-row { display: flex; gap: 40px; margin-top: 20px; }
+.stat-box { display: flex; flex-direction: column; }
+.stat-num { font-size: 1.8rem; font-weight: bold; color: #00d4ff; }
+.stat-desc { font-size: 0.8rem; color: #666; text-transform: uppercase; }
+
+/*=============================================
+Анімації, допоміжні класи та футер (загальне)
+=============================================*/
+.text-accent { color: #00d4ff; }
+.text-muted { color: #888; }
+
+.message {
+	text-align: center;
+	font-size: 1rem;
+	margin-top: 20px;
+}
+
+@keyframes fadeInUp { 
+	from { opacity: 0; transform: translateY(20px); } 
+	to { opacity: 1; transform: translateY(0); } 
+}
+
+footer {
+	padding: 40px 0;
+	background: #171717;
+	border-top: 1px solid #333;
+	text-align: center;
+	width: 100%;
+	flex-shrink: 0;
+}
+
+/*=========================================
+Медіа запити (наче норм на 9:16)
+=========================================*/
+@media (max-width: 1100px) {
+	.container { width: 100%; }
+}
+
+@media (max-width: 900px) {
+	.filter-bar { flex-wrap: wrap; }
+}
+
+@media (max-width: 768px) {
+	body { min-height: 100vh; zoom: 1; }
+	.main-wrapper { padding-top: 110px; }
+	.filter-bar { flex-direction: column; align-items: stretch; }
+	.video-wrapper { width: 100%; }
+	.auth-card { width: 95%; padding: 25px; }
+}
